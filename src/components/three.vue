@@ -1,6 +1,7 @@
 <template>
   <div class="hello3">
 333333
+<slot></slot>
   </div>
 </template>
 

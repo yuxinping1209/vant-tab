@@ -12,7 +12,7 @@
       <li class="title" :class="{'on':active==5}" @click="selectActive(5)">保养</li>
     </ul>
 
-      <van-action-sheet v-model="show" :actions="plusList" />
+      <van-action-sheet v-model="show" :actions="plusList" @select="onSelect" />
   </div>
 </div>
 <div class="toggle">
@@ -22,6 +22,10 @@
 <four v-if="active==4"></four>
 <five v-if="active==5"></five>
 </div>
+<van-tabs v-if="active==0" type="card" color="#27a2ee">
+  <van-tab title="报修"><three>hahah</three></van-tab>
+  <van-tab title="维护"><four></four></van-tab>
+</van-tabs>
   </div>
 </template>
 
@@ -48,6 +52,14 @@ export default {
   methods:{
     selectActive(e){
       this.active=e
+    },
+    onSelect(item){
+      this.show=false
+      if(item.id===0){
+        console.log("报修")
+      }else if(item.id===1){
+        console.log("维护")
+      }
     }
   }
 }
@@ -55,6 +67,7 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
+
 h1, h2 {
   font-weight: normal;
 }
@@ -68,5 +81,13 @@ li {
 }
 a {
   color: #42b983;
+}
+.top{
+  display: flex;
+  justify-content: center;
+  align-items:center;
+}
+.on{
+  font-weight:bold;
 }
 </style>
